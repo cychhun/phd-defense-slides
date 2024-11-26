@@ -1,0 +1,360 @@
+\usepackage{amsmath,dsfont,amsfonts,graphicx,psfrag}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathptmx}
+\usepackage[utf8]{inputenc}
+%\usepackage{palatino}
+\usepackage[T1]{fontenc}
+
+%\usepackage[french]{babel}
+
+\newcommand{\eqdef}{=}
+\newcommand{\vect}[1]{{\bf #1}}
+\newcommand{\mat}[1]{{\bf #1}}
+\newcommand{\R} {\mathds{R}}
+\newcommand{\E} {\mathrm{E}}
+\newcommand{\ve}{\mathbf{v}}
+\newcommand{\vex}{\mathbf{v}_x}
+\newcommand{\vey}{\mathbf{v}_y}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\de}{\mathbf{d}}
+\newcommand{\ru}{\rule{0cm}{3.5mm}}
+\newcommand{\reg}{\mathcal{R}}
+\newcommand{\eye}{\mathbf{I}}
+\newcommand{\fkb}{\mathbf{f}_k(B_{p,q})}
+\newcommand{\fb}[2]{\mathbf{f}_{#1}(B_{#2})}
+\newcommand{\tfkb}{\tilde{\mathbf{f}}_k(B_{p,q})}
+\newcommand{\tfhb}{\tilde{\mathbf{f}}_h(B_{p-i,q-j})}
+\newcommand{\tfskb}{\tilde{\mathbf{f}}^2_k(B_{p,q})}
+\newcommand{\tfshb}{\tilde{\mathbf{f}}^2_h(B_{p-i,q-j})}
+
+%\newcommand{\plan}{Plan} % replace with 
+\newcommand{\plan}{Outline} %for English
+
+% *** TPT STYLE ***
+
+\definecolor{colorframetitle}{RGB}{191,18,56} % Title of frames
+\definecolor{redbox}{RGB}{191,18,56} % 
+\definecolor{blackbox}{RGB}{0,0,0} % 
+\definecolor{brownbox}{RGB}{128,99,90} % 
+
+\usepackage[absolute,overlay]{textpos}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\usetikzlibrary{arrows,shapes,automata,backgrounds,petri}
+\usepackage{scalefnt}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\tikzstyle{mybox} = [draw=redbox, fill=redbox!20, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[fill=redbox, text=white, rectangle]
+
+\newcommand{\MyLogo}{
+%\begin{textblock}{14}(117.2,0.7)
+\begin{textblock}{14}(117.8,80)
+  \includegraphics[width=1cm]{files/tp_ipp}
+ \end{textblock}
+}
+
+\usepackage{beamerthemesplit}
+
+\setbeamercolor{itemize item}{fg=redbox}
+\setbeamercolor{structure}{fg=redbox, bg=red}
+\setbeamercolor{block title}{bg=brownbox,fg=white}
+\setbeamercolor{block title alerted}{bg=redbox,fg=white}
+\setbeamercolor{block body alerted}{bg=brownbox!0,fg=black}
+\setbeamercolor{block title example}{bg=black, fg=white}
+\setbeamercolor{palette primary}{fg=black,bg=white} % changed this
+\setbeamercolor{palette secondary}{use=structure,fg=structure.fg!100!white} % changed this
+\setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!100!white} % changed this
+\setbeamercolor*{palette quaternary}{fg=black,bg=white} % outline on top left
+\setbeamercolor{background canvas}{bg=white, fg=black} 
+\setbeamercolor{frametitle}{fg=colorframetitle}
+
+% First  frame
+\newcommand{\RectanglesOfMainSlide}{%
+\raisebox{0mm}[0pt][0pt]{%
+\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
+\pgfsetlinewidth{5mm}
+\color{redbox}
+\pgfline{\pgfpoint{-4mm}{-12mm}}{\pgfpoint{24mm}{-12mm}}
+\color{blackbox}
+\pgfline{\pgfpoint{24mm}{-12mm}}{\pgfpoint{52mm}{-12mm}}
+\color{brownbox}
+\pgfline{\pgfpoint{52mm}{-12mm}}{\pgfpoint{80mm}{-12mm}}
+\end{pgfpicture}}}
+
+\newcommand{\makeFirstFrame}{
+\setbeamertemplate{footline}{} 
+\frame[plain]{
+\begin{columns}[c]
+\column{3cm}
+\vspace{-2cm}\\
+\includegraphics[width=2.5cm]{files/tp_ipp}
+\\ \vspace{1cm} \includegraphics[width=2.5cm]{files/imt}
+%\tiny \textcolor{SkyBlue}{Institut  Mines-T\'el\'ecom}
+\column{7cm}
+% \vspace{0.5cm}\\
+\Large{\textbf{\theTitle}}\\
+\vspace{0.5cm}
+\normalsize{ \textcolor{black!70!white}{PhD Defense of \theAuthor}}\\
+\vspace{0.5cm}
+\normalsize{ \textcolor{black!70!white}{\theDate}}\\
+\vspace{0.5cm}
+\small{ \textcolor{black!60!white}{Supervisors: \theSupervisors}}\\
+% \vspace{-1cm}
+\small{ \textcolor{black!60!white}{Reviewers: \theReviewers}}\\
+% \vspace{-1cm}
+\small{ \textcolor{black!60!white}{Examiners: \theExaminers}}\\
+\vspace{-1cm}
+\RectanglesOfMainSlide
+\end{columns}
+}
+\activateFootline
+}
+
+% Frames decoration
+
+\newcommand{\RectanglesBeforeTitle}{%
+\raisebox{0mm}[0pt][0pt]{%
+\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
+\pgfsetlinewidth{5mm}
+\color{redbox}
+\pgfline{\pgfpoint{-2mm}{2.2mm}}{\pgfpoint{4mm}{2.2mm}}
+\color{blackbox}
+\pgfline{\pgfpoint{4mm}{2.2mm}}{\pgfpoint{10mm}{2.2mm}}
+\color{brownbox}
+\pgfline{\pgfpoint{10mm}{2.2mm}}{\pgfpoint{16mm}{2.2mm}}
+\end{pgfpicture}}}
+
+\setbeamertemplate{frametitle}{
+\begin{columns}[t]
+\column{16mm}
+\RectanglesBeforeTitle 
+\column{10.7cm}
+\strut\textbf{\insertframetitle}\strut
+\end{columns}
+}
+\renewcommand{\framesubtitle}[1]{ {\scriptsize \color{redbox}{#1}  \\ } }
+
+% Foot line
+
+\newcommand{\Ffootline}{
+\MyLogo
+\begin{tikzpicture}
+ \fill [color=white, fill=redbox] (-1, -0.05) rectangle (0, 0.30);
+\node[white, right] (note1) at (-0.875, 0.10) {\insertframenumber/59};
+ \fill [color=white, fill=blackbox] (0.05, -0.05) rectangle (2.25, 0.30);
+\node[white, left] (note1bis) at (2.25, 0.10) {\theDate};
+ \fill [color=red, fill=brownbox] (2.3, -0.05) rectangle (10.75, 0.30);
+\node[white, align = center] (note3) at (6.5, 0.10) {\theTitle};
+
+%\node[white] (note3) at (7.5, 0.10) {\theTitle};
+\end{tikzpicture}
+}
+
+\newcommand{\activateFootline}{
+\setbeamertemplate{footline}{
+\usebeamerfont{structure}
+\Ffootline
+}
+}
+
+% *** END OF TPT STYLE ***
+
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{pifont}
+
+%remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% To show the outline at the beginning of each section
+\AtBeginSection[]{
+   \begin{frame}
+   \frametitle{\plan}   
+   \tableofcontents[currentsection,hideothersubsections]
+   \end{frame} 
+}
+
+\useoutertheme[subsection=false]{miniframes}
+\setbeamercolor{section in head/foot}{fg=white, bg=blackbox}
+\setbeamercolor{subsection in head/foot}{fg=white, bg=redbox}
+
+%\newcommand{\LinkToMethodo}{
+%\begin{textblock}{25}(102,89)
+%  \hyperlink{METHODO}{\beamergotobutton{Back to methodology}}
+% \end{textblock}
+%}
+
+\lstset{language=C,basicstyle=\scriptsize,keywordstyle=\color{red}\bfseries,  commentstyle=\color{blue}\textit,stringstyle=\color{green}\ttfamily, showspaces=false,showstringspaces=false}
+
+\newcommand{\mytilde}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
+
+\newcommand{\tikzgrid}{
+\begin{pgfonlayer}{background}
+\draw[gray!50]
+(current bounding box.south west)
+grid[step=.2] (current bounding box.north east);
+\draw[red!50]
+(current bounding box.south west)
+grid (current bounding box.north east);
+\end{pgfonlayer}
+}
+
+\makeatletter
+\newenvironment{noheadline}{
+    \setbeamertemplate{headline}{}
+}{}
+\makeatother
+
+\newcommand*{\ExtractCoordinate}[3]{\path (#1); \pgfgetlastxy{#2}{#3};}%
+
+\newdimen\tlx
+\newdimen\tlx
+\newdimen\brx
+\newdimen\bry
+
+\newcommand{\result}[2]{ #1 \color{lightgray}\!{\tiny{$\pm{#2}$}}}
+\newcommand{\resultscr}[2]{ #1 \color{lightgray}\!{\scriptsize{$\pm{#2}$}}}
+\newcommand{\icc}[3]{{\scriptsize\textcolor{lightgray}{#1}} #2 {\tiny\textcolor{lightgray}{#3}}}
+\newcommand{\lorem}[2]{\textcolor{blue}{\lipsum[#1][#2]}}
+\newcommand{\coling}{\textsc{COLING}}
+\newcommand{\hanna}{\textsc{HANNA}}
+\newcommand{\asgfull}{Automatic Story Generation}
+\newcommand{\asg}{\textsc{ASG}}
+\newcommand{\asefull}{Automatic Story Evaluation}
+\newcommand{\ase}{\textsc{ASE}}
+\newcommand{\csr}{\textsc{CSR}}
+\newcommand{\ml}{\textsc{ML}}
+\newcommand{\nlp}{\textsc{NLP}}
+\newcommand{\nlpfull}{Natural Language Processing}
+\newcommand{\nlg}{\textsc{NLG}}
+\newcommand{\nlgfull}{Natural Language Generation}
+\newcommand{\slm}{\textsc{SLM}}
+\newcommand{\llm}{\textsc{LLM}}
+\newcommand{\llmfull}{Large Language Model}
+\newcommand{\cnn}{\textsc{CNN}}
+\newcommand{\rnn}{\textsc{RNN}}
+\newcommand{\lstm}{\textsc{LSTM}}
+\newcommand{\seqseq}{\textsc{Seq2Seq}}
+\newcommand{\cbow}{\textsc{CBOW}}
+\newcommand{\wvec}{\textsc{Word2vec}}
+\newcommand{\glove}{\textsc{GloVe}}
+\newcommand{\ftext}{\textsc{FastText}}
+\newcommand{\wmt}{\textsc{WMT}}
+\newcommand{\roc}{\textsc{ROCStories}}
+\newcommand{\sind}{\textsc{SIND}}
+\newcommand{\wpfan}{\textsc{WritingPrompts}}
+\newcommand{\rpg}{\textsc{RPG}}
+\newcommand{\rpguild}{\textsc{RolePlayerGuild}}
+\newcommand{\pgnt}{\textsc{PG-19}}
+\newcommand{\storium}{\textsc{Storium}}
+\newcommand{\openmeva}{\textsc{OpenMEVA}}
+\newcommand{\swag}{\textsc{SWAG}}
+\newcommand{\tingle}{\textsc{DeepTingle}}
+\newcommand{\etoe}{\textsc{Event2Event}}
+\newcommand{\etos}{\textsc{Event2Sequence}}
+\newcommand{\engen}{\textsc{EnGen}}
+\newcommand{\stsa}{\textsc{S2SA}}
+\newcommand{\entnlm}{\textsc{EntityNLM}}
+\newcommand{\paw}{\textsc{Plan-And-Write}}
+\newcommand{\emorl}{\textsc{EmoRL}}
+\newcommand{\emosup}{\textsc{EmoSup}}
+\newcommand{\ctpo}{\textsc{C2PO}}
+\newcommand{\plotm}{\textsc{PlotMachines}}
+\newcommand{\cnet}{\textsc{ConceptNet}}
+\newcommand{\atomic}{\textsc{Atomic}}
+\newcommand{\ktt}{\textsc{Keyword2Text}}
+\newcommand{\fusion}{\textsc{Fusion}}
+\newcommand{\hint}{\textsc{HINT}}
+\newcommand{\tdvae}{\textsc{TD-VAE}}
+\newcommand{\elmo}{\textsc{ELMo}}
+\newcommand{\bert}{\textsc{BERT}}
+\newcommand{\bart}{\textsc{BART}}
+\newcommand{\bertgen}{\textsc{BERTGen}}
+\newcommand{\bertgeneration}{\textsc{BERTGeneration}}
+\newcommand{\ctrl}{\textsc{CTRL}}
+\newcommand{\roberta}{\textsc{RoBERTa}}
+\newcommand{\xlnet}{\textsc{XLNet}}
+\newcommand{\gpt}{\textsc{GPT}}
+\newcommand{\gptt}{\textsc{GPT-2}}
+\newcommand{\gpttag}{\textsc{GPT-2 (tag)}}
+\newcommand{\gptthree}{\textsc{GPT-3}}
+\newcommand{\gptfour}{\textsc{GPT-4}}
+\newcommand{\lamda}{\textsc{LaMDA}}
+\newcommand{\palm}{\textsc{PaLM}}
+\newcommand{\chatgpt}{\textsc{ChatGPT}}
+\newcommand{\instructgpt}{\textsc{InstructGPT}}
+\newcommand{\llama}{\textsc{LLaMA}}
+\newcommand{\llamasmall}{Llama-7B}
+\newcommand{\llamamid}{Llama-13B}
+\newcommand{\llamalarge}{Llama-30B}
+\newcommand{\mistral}{Mistral-7B}
+\newcommand{\beluga}{Beluga-13B}
+\newcommand{\platypus}{Platypus2-70B}
+\newcommand{\eop}{\textsc{EOP}}
+\newcommand{\eos}{\textsc{EOS}}
+\newcommand{\eoptag}{\texttt{<EOP>}}
+\newcommand{\transf}{\textsc{Transformers}}
+\newcommand{\pingouin}{\textsc{Pingouin}}
+\newcommand{\mink}{Min-K\%}
+\newcommand{\minkprob}{\textsc{Min-K\% Prob}}
+\newcommand{\booksmia}{\textsc{BooksMIA}}
+\newcommand{\nneval}{\textsc{NNEval}}
+\newcommand{\bleu}{\textsc{BLEU}}
+\newcommand{\nist}{\textsc{NIST}}
+\newcommand{\rouge}{\textsc{ROUGE}}
+\newcommand{\meteor}{\textsc{METEOR}}
+\newcommand{\chrf}{\textsc{chrF}}
+\newcommand{\chrp}{\textsc{chrP}}
+\newcommand{\chrr}{\textsc{chrR}}
+\newcommand{\cider}{\textsc{CIDEr}}
+\newcommand{\rougewe}{\textsc{ROUGE-WE}}
+\newcommand{\bertscore}{\textsc{BERTScore}}
+\newcommand{\mover}{\textsc{MoverScore}}
+\newcommand{\bary}{\textsc{BaryScore}}
+\newcommand{\depth}{\textsc{DepthScore}}
+\newcommand{\sthree}{\textsc{S3}}
+\newcommand{\summa}{\textsc{SummaQA}}
+\newcommand{\qascore}{$\textrm{QA}_\textrm{F-score}$}
+\newcommand{\qaconf}{$\textrm{QA}_\textrm{conf}$}
+\newcommand{\infolm}{\textsc{InfoLM}}
+\newcommand{\coverage}{\textsc{Coverage}}
+\newcommand{\density}{\textsc{Density}}
+\newcommand{\compression}{\textsc{Compression}}
+\newcommand{\tlength}{\textsc{Text length}}
+\newcommand{\novelty}{\textsc{Novelty}}
+\newcommand{\repetition}{\textsc{Repetition}}
+\newcommand{\supert}{\textsc{SUPERT}}
+\newcommand{\gold}{\textsc{Gold}}
+\newcommand{\blanc}{\textsc{BLANC}}
+\newcommand{\bartscore}{\textsc{BARTScore}}
+\newcommand{\tfidf}{\textsc{TF-IDF}}
+\newcommand{\summeval}{\textsc{SummEval}}
+\newcommand{\myre}{\textsc{RE}}
+\newcommand{\mych}{\textsc{CH}}
+\newcommand{\myem}{\textsc{EM}}
+\newcommand{\mysu}{\textsc{SU}}
+\newcommand{\myeg}{\textsc{EG}}
+\newcommand{\mycx}{\textsc{CX}}
+\newcommand{\fwer}{\textsc{FWER}}
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\ie}{\emph{i.e.}}
+\newcommand{\wrt}{w.r.t.}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\cmark}{\textcolor{green!80!black}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}
+\newcommand{\pmark}{\textcolor{orange}{$\boldsymbol{\approx}$}}
