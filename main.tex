@@ -1,0 +1,46 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+% Uncomment this line to compile an handout (printable) version.
+% \documentclass[xcolor=dvipsnames,handout]{beamer}
+
+\input{preamble/preamble} % The new TP-IPP style!
+\input{preamble/title}    % Title and summary
+
+\begin{document}
+
+\makeFirstFrame
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\include{00_introduction}
+
+\begin{frame}{\plan}
+  \tableofcontents
+\end{frame}
+
+\section[Introduction]{Introduction and Background}
+\include{01_background}
+
+\section[Methodology]{Methodology for Story Evaluation and ASG Meta-Evaluation}
+\include{1_rq1}
+
+\section[HANNA Corpus]{HANNA: A Corpus of Human-ANnotated NArratives for ASG Evaluation}
+\include{2_rq2}
+
+\section[Meta-Evaluation Benchmark]{Meta-Evaluation Benchmark of Automatic Story Generation}
+\include{3_rq3}
+
+\section[LLM Explainability]{Exploring LLM Explainability for ASE and ASG}
+\include{4_rq4}
+
+\section{Conclusion}
+\include{5_conclusion}
+
+\appendix
+
+\section{Appendix}
+\include{6_appendix}
+
+\bibliographystyle{acl_natbib}
+\bibliography{biblio}
+
+\end{document}
